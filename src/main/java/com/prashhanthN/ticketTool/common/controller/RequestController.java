@@ -88,9 +88,9 @@ public class RequestController {
 	}
 	
 	
-	@GetMapping("/reqCount")
-	public int getCount(){
-		List l= allRequestDetails();
+	@GetMapping("/reqCountByGrpnUser/{grp}/{user}")
+	public int getCountRequestByGrpnUser(@PathVariable("grp") String grp,@PathVariable("user") String user) {
+		List l= findByAssignedGrpAndAssignedTo(grp,user);
 		return l.size();
 	}
 }
