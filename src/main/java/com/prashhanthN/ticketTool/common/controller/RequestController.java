@@ -1,5 +1,6 @@
 package com.prashhanthN.ticketTool.common.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -84,5 +85,12 @@ public class RequestController {
 	@GetMapping("/requestByGrp/{grp}/{user}")
 	public List<Request> findByAssignedGrpAndAssignedTo(@PathVariable("grp") String grp,@PathVariable("user") String user) {
 		return requestRepo.findByAssignedGrpAndAssignedTo(grp,user);
+	}
+	
+	
+	@GetMapping("/reqCountByGrpnUser/{grp}/{user}")
+	public int getCountRequestByGrpnUser(@PathVariable("grp") String grp,@PathVariable("user") String user) {
+		List l= findByAssignedGrpAndAssignedTo(grp,user);
+		return l.size();
 	}
 }
